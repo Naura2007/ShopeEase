@@ -7,6 +7,22 @@
       <a href="<?= base_url('/') ?>#promo">Promo</a>
       <a href="<?= base_url('tentang') ?>">Tentang</a>
     </nav>
-    <a class="btn btn--sm" href="<?= base_url('produk') ?>">Mulai belanja</a>
+
+    <?php if (session()->get('isLoggedIn')): ?>
+      <div class="nav__user">
+        <span>Hai, <?= esc(session()->get('name')) ?></span>
+        <?php if (session()->get('role') === 'admin'): ?><a href="<?= site_url('admin') ?>">Dashboard</a><?php endif; ?>
+        <?php if (session()->get('role') === 'operator'): ?><a href="<?= site_url('operator') ?>">Dashboard</a><?php endif; ?>
+        <form action="<?= site_url('logout') ?>" method="post">
+          <?= csrf_field() ?>
+          <button class="btn btn--sm btn--line" type="submit">Logout</button>
+        </form>
+      </div>
+    <?php else: ?>
+      <div class="nav__user">
+        <a href="<?= site_url('login') ?>">Login</a>
+        <a class="btn btn--sm" href="<?= site_url('register') ?>">Daftar</a>
+      </div>
+    <?php endif; ?>
   </div>
 </header>
