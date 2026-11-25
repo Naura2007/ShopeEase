@@ -1,7 +1,17 @@
-<?= $this->extend('layouts/main') ?>
+<?= $this->extend('layouts/admin') ?>
 <?= $this->section('content') ?>
-<section class="sec"><div class="wrap">
-  <h1 class="h1s">Dashboard Admin</h1>
-  <p>Halo, <?= esc(session('name')) ?>. Halaman ini hanya bisa dibuka oleh role admin.</p>
-</div></section>
+<h3>Dashboard Admin</h3>
+<p class="text-muted">Selamat datang, <?= esc(session('name')) ?>.</p>
+<div class="row g-3">
+  <div class="col-md-6">
+    <a class="card border-0 shadow-sm text-decoration-none h-100" href="<?= site_url('admin/products') ?>">
+      <div class="card-body"><h5>Product Management</h5><p class="text-muted mb-0">Kelola produk dan gambar.</p></div>
+    </a>
+  </div>
+  <div class="col-md-6">
+    <a class="card border-0 shadow-sm text-decoration-none h-100" href="<?= site_url('admin/categories') ?>">
+      <div class="card-body"><h5>Kategori</h5><p class="text-muted mb-0">Kelola kategori produk.</p></div>
+    </a>
+  </div>
+</div>
 <?= $this->endSection() ?>
